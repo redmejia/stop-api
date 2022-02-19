@@ -9,6 +9,9 @@ import (
 func routes(a *api.Application) http.Handler {
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", a.ProductPants)
+
+	mux.HandleFunc("/pants", a.ProductPants)
+	mux.HandleFunc("/shirts", a.ProductShirt)
+
 	return mux
 }

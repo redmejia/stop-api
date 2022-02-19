@@ -2,12 +2,7 @@ package models
 
 type Product struct {
 	Name  string
-	Sizes []int
+	Sizes []interface{}
 	Price float64
 	Image string
-}
-
-type Pants struct {
-	Type    string
-	PProduc []Product
 }

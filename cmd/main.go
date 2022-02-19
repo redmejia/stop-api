@@ -11,9 +11,12 @@ import (
 func main() {
 
 	info := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime|log.Lshortfile)
+	errors := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+	success := log.New(os.Stdout, "SUCCESS\t", log.Ldate|log.Ltime|log.Lshortfile)
+
 	server := log.New(os.Stdout, "SERVICE\t", log.Ldate|log.Ltime)
 
-	api := api.Application{Info: info}
+	api := api.Application{Info: info, Error: errors, Success: success}
 
 	srv := &http.Server{
 		Addr:    ":8080",
