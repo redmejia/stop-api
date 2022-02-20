@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/redmejia/stop/api"
+	"github.com/redmejia/stop/cors"
 )
 
 func routes(a *api.Application) http.Handler {
@@ -12,9 +13,10 @@ func routes(a *api.Application) http.Handler {
 
 	mux.HandleFunc("/pants", a.ProductPants)
 	mux.HandleFunc("/shirts", a.ProductShirt)
+	mux.HandleFunc("/arrivals", a.ProductArrivals)
 
 	fs := http.FileServer(http.Dir("./static"))
 	mux.Handle("/", http.StripPrefix("/", fs))
 
-	return mux
+	return cors.Cors(mux)
 }
