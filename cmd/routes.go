@@ -13,5 +13,8 @@ func routes(a *api.Application) http.Handler {
 	mux.HandleFunc("/pants", a.ProductPants)
 	mux.HandleFunc("/shirts", a.ProductShirt)
 
+	fs := http.FileServer(http.Dir("./static"))
+	mux.Handle("/", http.StripPrefix("/", fs))
+
 	return mux
 }

@@ -13,19 +13,19 @@ var productPants = []models.Product{
 		Name:  "Pant1",
 		Sizes: []interface{}{1, 2, 3, 41, 2, 3, 4},
 		Price: 12.53,
-		Image: "no image",
+		Image: "images/pants-unsplash.jpg",
 	},
 	models.Product{
 		Name:  "Pant2",
 		Sizes: []interface{}{1, 2, 3, 41, 2, 3, 4},
 		Price: 12.53,
-		Image: "no image",
+		Image: "images/pants-unsplash.jpg",
 	},
 	models.Product{
 		Name:  "Pant3",
 		Sizes: []interface{}{1, 2, 3, 41, 2, 3, 4},
 		Price: 12.53,
-		Image: "no image",
+		Image: "images/pants-unsplash.jpg",
 	},
 }
 
@@ -34,19 +34,19 @@ var productShirts = []models.Product{
 		Name:  "shirt1",
 		Sizes: []interface{}{"xs", "s", "m"},
 		Price: 12.53,
-		Image: "no image",
+		Image: "images/seven-unsplash.jpg",
 	},
 	models.Product{
 		Name:  "shirt2",
 		Sizes: []interface{}{"xs", "s", "m"},
 		Price: 12.53,
-		Image: "no image",
+		Image: "images/seven-unsplash.jpg",
 	},
 	models.Product{
 		Name:  "shirt3",
 		Sizes: []interface{}{"xs", "s", "m"},
 		Price: 12.53,
-		Image: "no image",
+		Image: "images/seven-unsplash.jpg",
 	},
 }
 
