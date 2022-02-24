@@ -1,14 +1,24 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/redmejia/stop/api"
+	"github.com/redmejia/stop/database"
 )
 
 func main() {
+	// connection
+	db, _ := database.Connection()
+	connected, err := database.ConnectionPing(db)
+	if err != nil {
+		fmt.Println("ERROR", err)
+	}
+
+	fmt.Println("Connection success : ", connected)
 
 	info := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime|log.Lshortfile)
 	errors := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
@@ -25,7 +35,7 @@ func main() {
 
 	server.Println("Runing on http://127.0.0.1:8080")
 
-	err := srv.ListenAndServe()
+	err = srv.ListenAndServe()
 	if err != nil {
 		log.Println("err ", err)
 	}
