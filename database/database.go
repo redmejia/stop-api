@@ -45,8 +45,7 @@ func Connection() (*DB, error) {
 	return &db, nil
 }
 
-// test separe file
-
+// test method
 func (d *DB) Get() {
 	fmt.Println("Getting Gophers")
 }
