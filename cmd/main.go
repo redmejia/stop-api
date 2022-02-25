@@ -11,22 +11,25 @@ import (
 )
 
 func main() {
-	// connection
-	db, _ := database.Connection()
-	connected, err := database.ConnectionPing(db)
+	// connection postgresql
+	db, err := database.Connection()
 	if err != nil {
 		fmt.Println("ERROR", err)
 	}
 
-	fmt.Println("Connection success : ", connected)
-
+	// loggers
 	info := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime|log.Lshortfile)
 	errors := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 	success := log.New(os.Stdout, "SUCCESS\t", log.Ldate|log.Ltime|log.Lshortfile)
 
 	server := log.New(os.Stdout, "SERVICE\t", log.Ldate|log.Ltime)
 
-	api := api.Application{Info: info, Error: errors, Success: success}
+	api := api.Application{
+		DB:      db,
+		Info:    info,
+		Error:   errors,
+		Success: success,
+	}
 
 	srv := &http.Server{
 		Addr:    ":8080",

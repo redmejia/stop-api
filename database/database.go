@@ -22,7 +22,7 @@ const (
 )
 
 // connection
-func Connection() (*sql.DB, error) {
+func Connection() (*DB, error) {
 
 	port, _ := strconv.Atoi(os.Getenv("DBPORT"))
 	connDB := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=%s",
@@ -42,7 +42,13 @@ func Connection() (*sql.DB, error) {
 	db.Db.SetMaxIdleConns(idleConns)
 	db.Db.SetConnMaxLifetime(lifeTime)
 
-	return db.Db, nil
+	return &db, nil
+}
+
+// test separe file
+
+func (d *DB) Get() {
+	fmt.Println("Getting Gophers")
 }
 
 // connection test

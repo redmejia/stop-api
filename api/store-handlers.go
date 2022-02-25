@@ -72,6 +72,10 @@ type product map[string][]models.Product
 type arrivalsProduct map[string][]models.NewArrivals
 
 func (a *Application) ProductPants(w http.ResponseWriter, r *http.Request) {
+
+	a.Info.Println("Test Getting")
+	a.DB.Get()
+
 	var pants = make(product)
 	pants["pants"] = productPants
 

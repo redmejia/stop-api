@@ -1,12 +1,13 @@
 package api
 
 import (
-	"database/sql"
 	"log"
+
+	"github.com/redmejia/stop/database"
 )
 
 // Logger and DB conneection
 type Application struct {
-	DB                   *sql.DB
+	DB                   *database.DB
 	Info, Error, Success *log.Logger
 }
