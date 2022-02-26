@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -11,18 +10,19 @@ import (
 )
 
 func main() {
-	// connection postgresql
-	db, err := database.Connection()
-	if err != nil {
-		fmt.Println("ERROR", err)
-	}
+	server := log.New(os.Stdout, "SERVICE\t", log.Ldate|log.Ltime)
 
 	// loggers
 	info := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime|log.Lshortfile)
 	errors := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 	success := log.New(os.Stdout, "SUCCESS\t", log.Ldate|log.Ltime|log.Lshortfile)
 
-	server := log.New(os.Stdout, "SERVICE\t", log.Ldate|log.Ltime)
+	// connection postgresql
+	db, err := database.Connection()
+	if err != nil {
+		errors.Fatal(err)
+		return
+	}
 
 	api := api.Application{
 		DB:      db,
