@@ -86,7 +86,7 @@ func (a *Application) ProductPants(w http.ResponseWriter, r *http.Request) {
 
 	scanRows := func(rows *sql.Rows) (models.Product, error) {
 
-		var pants models.Pants
+		var pants models.PantSizes
 		var p models.Product
 
 		product := models.Product{
@@ -138,23 +138,69 @@ func (a *Application) ProductPants(w http.ResponseWriter, r *http.Request) {
 	w.Write(b)
 }
 
-// func (a *Application) ProductShirt(w http.ResponseWriter, r *http.Request) {
-// 	var shirts = make(product)
-// 	shirts["shirts"] = productShirts
-//
-// 	b, err := json.Marshal(&shirts)
-// 	if err != nil {
-// 		a.Error.Fatal(err)
-// 		return
-// 	}
-//
-// 	a.Success.Println(string(b))
-//
-// 	w.Header().Add("Content-Type", "application/json")
-// 	w.WriteHeader(http.StatusOK)
-// 	w.Write(b)
-//
-// }
+func (a *Application) ProductShirt(w http.ResponseWriter, r *http.Request) {
+
+	query := `
+		SELECT 
+			id, name,
+			sizes[1], sizes[2],
+			sizes[3], price,
+			image
+		FROM
+			shirts
+	`
+	scanRows := func(rows *sql.Rows) (models.Product, error) {
+
+		var shirtSize models.ShirtSizes
+		var p models.Product
+
+		product := models.Product{
+			PID:  p.PID,
+			Name: p.Name,
+			Sizes: []string{
+				shirtSize.S,
+				shirtSize.M,
+				shirtSize.L,
+			},
+			Price: p.Price,
+			Image: p.Image,
+		}
+
+		err := rows.Scan(
+			&product.PID,
+			&product.Name,
+			&product.Sizes[0],
+			&product.Sizes[1],
+			&product.Sizes[2],
+			&product.Price,
+			&product.Image,
+		)
+
+		return product, err
+
+	}
+
+	products, err := a.DB.Get(query, scanRows)
+	if err != nil {
+		a.Error.Println(err)
+	}
+
+	var shirts = make(product)
+	shirts["shirts"] = products
+
+	b, err := json.Marshal(&shirts)
+	if err != nil {
+		a.Error.Fatal(err)
+		return
+	}
+
+	a.Success.Println(string(b))
+
+	w.Header().Add("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(b)
+
+}
 
 func (a *Application) ProductArrivals(w http.ResponseWriter, r *http.Request) {
 	var arrivals = make(arrivalsProduct)

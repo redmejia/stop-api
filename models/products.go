@@ -10,7 +10,7 @@ type Product struct {
 
 // Update with the products sizes
 // Pants sizes
-type Pants struct {
+type PantSizes struct {
 	SizeOne   string
 	SizeTwo   string
 	SizeThree string
@@ -18,7 +18,7 @@ type Pants struct {
 }
 
 // Shirts sizes
-type Shirts struct {
+type ShirtSizes struct {
 	S string
 	M string
 	L string
