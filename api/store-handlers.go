@@ -153,6 +153,7 @@ func (a *Application) ProductShirt(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// This method is use for the web stop applicatio
 func (a *Application) ProductArrivals(w http.ResponseWriter, r *http.Request) {
 	var arrivals = make(arrivalsProduct)
 	arrivals["arrivals"] = newArrivals
