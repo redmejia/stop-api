@@ -8,55 +8,6 @@ import (
 	"github.com/redmejia/stop/models"
 )
 
-// test data for product pants and shirts
-// var productPants = []models.Product{
-// 	models.Product{
-// 		PID:   1,
-// 		Name:  "Pant1",
-// 		Sizes: []interface{}{1, 2, 3, 41, 2, 3, 4},
-// 		Price: 12.53,
-// 		Image: "images/pants-unsplash.jpg",
-// 	},
-// 	models.Product{
-// 		PID:   2,
-// 		Name:  "Pant2",
-// 		Sizes: []interface{}{1, 2, 3, 41, 2, 3, 4},
-// 		Price: 12.53,
-// 		Image: "images/pants-unsplash.jpg",
-// 	},
-// 	models.Product{
-// 		PID:   3,
-// 		Name:  "Pant3",
-// 		Sizes: []interface{}{1, 2, 3, 41, 2, 3, 4},
-// 		Price: 12.53,
-// 		Image: "images/pants-unsplash.jpg",
-// 	},
-// }
-//
-// var productShirts = []models.Product{
-// 	models.Product{
-// 		PID:   1,
-// 		Name:  "shirt1",
-// 		Sizes: []interface{}{"xs", "s", "m"},
-// 		Price: 12.53,
-// 		Image: "images/seven-unsplash.jpg",
-// 	},
-// 	models.Product{
-// 		PID:   2,
-// 		Name:  "shirt2",
-// 		Sizes: []interface{}{"xs", "s", "m"},
-// 		Price: 12.53,
-// 		Image: "images/seven-unsplash.jpg",
-// 	},
-// 	models.Product{
-// 		PID:   3,
-// 		Name:  "shirt3",
-// 		Sizes: []interface{}{"xs", "s", "m"},
-// 		Price: 12.53,
-// 		Image: "images/seven-unsplash.jpg",
-// 	},
-// }
-
 // test data for new arrivals
 var newArrivals = []models.NewArrivals{
 	models.NewArrivals{
