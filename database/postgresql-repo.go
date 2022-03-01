@@ -44,3 +44,5 @@ func (d *DB) Get(query string, scanRows func(*sql.Rows) (models.Product, error))
 	return products, nil
 
 }
+
+func (d *DB) NewOrder() {}
