@@ -10,11 +10,6 @@ import (
 	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
-// PostgreQL db
-type DB struct {
-	Db *sql.DB
-}
-
 const (
 	openConns = 10
 	idleConns = 3
@@ -43,11 +38,6 @@ func Connection() (*DB, error) {
 	db.Db.SetConnMaxLifetime(lifeTime)
 
 	return &db, nil
-}
-
-// test method
-func (d *DB) Get() {
-	fmt.Println("Getting Gophers")
 }
 
 // connection test
