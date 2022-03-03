@@ -25,6 +25,8 @@ type arrivalsProduct map[string][]models.NewArrivals
 
 func (a *Application) ProductPants(w http.ResponseWriter, r *http.Request) {
 
+	// postgresql array data type does not start at index 0 insted index 1
+	// {'28', '30', '32'} = sizes[1], sizes[2], sizes[3]
 	query := `
 		SELECT 
 			id, name, 
@@ -38,20 +40,22 @@ func (a *Application) ProductPants(w http.ResponseWriter, r *http.Request) {
 	scanRows := func(rows *sql.Rows) (models.Product, error) {
 
 		var pants models.PantSizes
-		var p models.Product
 
+		// this data type will populate with the data from the database
 		product := models.Product{
-			PID:  p.PID,
-			Name: p.Name,
-			Sizes: []string{
+			PID:  0,
+			Name: "",
+			Sizes: []string{ // add more size
 				pants.SizeOne,
 				pants.SizeTwo,
 				pants.SizeThree,
 				pants.SizeFour,
 			},
-			Price: p.Price,
-			Image: p.Image,
+			Price: 0.0,
+			Image: "",
 		}
+
+		// var product models.Product
 
 		err := rows.Scan(
 			&product.PID,
@@ -91,6 +95,8 @@ func (a *Application) ProductPants(w http.ResponseWriter, r *http.Request) {
 
 func (a *Application) ProductShirt(w http.ResponseWriter, r *http.Request) {
 
+	// postgresql array data type does not start at index 0 insted index 1
+	// {'28', '30', '32'} = sizes[1], sizes[2], sizes[3]
 	query := `
 		SELECT 
 			id, name,
@@ -103,18 +109,18 @@ func (a *Application) ProductShirt(w http.ResponseWriter, r *http.Request) {
 	scanRows := func(rows *sql.Rows) (models.Product, error) {
 
 		var shirtSize models.ShirtSizes
-		var p models.Product
 
+		// this data type will populate with the data from the database
 		product := models.Product{
-			PID:  p.PID,
-			Name: p.Name,
-			Sizes: []string{
+			PID:  0,
+			Name: "",
+			Sizes: []string{ //add more size
 				shirtSize.S,
 				shirtSize.M,
 				shirtSize.L,
 			},
-			Price: p.Price,
-			Image: p.Image,
+			Price: 0.0,
+			Image: "",
 		}
 
 		err := rows.Scan(
