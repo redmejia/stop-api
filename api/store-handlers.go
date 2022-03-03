@@ -55,8 +55,6 @@ func (a *Application) ProductPants(w http.ResponseWriter, r *http.Request) {
 			Image: "",
 		}
 
-		// var product models.Product
-
 		err := rows.Scan(
 			&product.PID,
 			&product.Name,
