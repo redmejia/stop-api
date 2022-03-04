@@ -14,9 +14,7 @@ type DB struct {
 }
 
 // Retrive method for products pants or shirts
-// the scanRows parameter is a function to rows.scan take the destionation data type
-// set on the call function so you can change dinamic the destination data type
-// Or you can create GetPant and GetShirts methods for retriving product separtly
+// The scanRows parameter is a function that take a *sql.Rows pointer
 func (d *DB) Get(query string, scanRows func(*sql.Rows) (models.Product, error)) ([]models.Product, error) {
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
